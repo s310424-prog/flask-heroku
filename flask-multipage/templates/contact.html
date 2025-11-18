@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>尖端網頁開發及APCS挑戰｜莊詠庭</title>
+<style>
+/* ====== 全站背景 ====== */
+body {
+  margin: 0;
+  padding: 0;
+  font-family: "Noto Sans TC", "微軟正黑體", sans-serif;
+  overflow-x: hidden;
+
+  background-image: url('https://truth.bahamut.com.tw/s01/201102/78dd6389c1ba1f98281f6244e6bb1cbe.JPG');
+  background-size: 100% auto; /* 寬度100%，高度自動 */
+  background-position: top center;
+  background-repeat: no-repeat;
+  position: relative;
+}
+
+/* 半透明柔和淡綠覆蓋層 */
+body::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(240, 255, 244, 0.6);
+  z-index: -1;
+}
+
+/* ====== 頂部 ====== */
+.top-container {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px 0;
+}
+.typing-container {
+  font-size: 4rem;
+  font-weight: bold;
+  white-space: nowrap;
+  overflow: hidden;
+  border-right: 3px solid rgb(41, 114, 71);
+  width: 23ch;
+  animation: typing 3s steps(23), blink 0.75s step-end infinite;
+  color: #000;
+  text-align: center;
+}
+.fade-in-text {
+  font-size: 2rem;
+  color: darkgreen;
+  font-weight: 700;
+  opacity: 0;
+  transform: translateY(20px);
+  animation: fadeIn 1.5s forwards;
+  animation-delay: 3.2s;
+  margin-top: 10px;
+  text-align: center;
+}
+.link {
+  font-size: 1.6rem;
+  color: darkgreen;
+  text-decoration: none;
+  opacity: 0;
+  transform: translateY(20px);
+  animation: fadeIn 1.5s forwards;
+  animation-delay: 4.2s;
+  margin-top: 5px;
+  text-align: center;
+}
+.link:hover {
+  color: #1a5e3b;
+  text-decoration: underline;
+}
+
+/* ====== 流程圖 ====== */
+.steps {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 200px;
+  width: 100%;
+  margin: 120px 0 80px 0;
+  flex-wrap: nowrap;
+}
+.step {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  position: relative;
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.5s ease-out, transform 0.5s ease-out;
+}
+.circle {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  background-color: green;
+  color: white;
+  font-size: 2.5rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 20px;
+  z-index: 1;
+}
+.step p {
+  font-size: 2rem;
+  margin: 0 0 20px 0;
+  color: #000;
+}
+.step img {
+  width: 450px;
+  height: auto;
+  border-radius: 15px;
+  box-shadow: 0 0 15px rgba(0,0,0,0.15);
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.5s ease-out, transform 0.5s ease-out;
+  margin-bottom: 15px;
+}
+
+/* ====== 下方內容 ====== */
+.content {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 100px;
+  padding: 100px 40px;
+  flex-wrap: wrap;
+  max-width: 1300px;
+  margin: 0 auto;
+}
+.column {
+  flex: 1 1 500px;
+  max-width: 600px;
+  font-size: 30px;
+  color: green;
+  line-height: 1.8;
+  text-align: justify;
+  background: rgba(255,255,255,0.9);
+  padding: 30px;
+  border-radius: 20px;
+  box-shadow: 0 0 20px rgba(0,0,0,0.08);
+  opacity: 0;
+  transform: translateY(40px);
+  transition: opacity 1.5s ease-out, transform 1.5s ease-out;
+}
+.column.show {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ====== 底部圖片與文字 ====== */
+.bottom {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 50px 0;
+  gap: 20px;
+}
+.bottom img {
+  width: 470px;
+  height: auto;
+  border-radius: 15px;
+  box-shadow: 0 0 15px rgba(0,0,0,0.2);
+}
+.bottom span {
+  font-size: 6rem;
+  color: darkgreen;
+  font-weight: 700;
+}
+
+/* ====== 動畫 ====== */
+@keyframes typing { from { width: 0; } to { width: 23ch; } }
+@keyframes blink { 50% { border-color: transparent; } }
+@keyframes fadeIn { to { opacity: 1; transform: translateY(0); } }
+
+</style>
+</head>
+<body>
+
+<!-- 頂部 -->
+<div class="top-container">
+  <div class="typing-container">尖端網頁開發及APCS挑戰</div>
+  <div class="fade-in-text">連亮禔　莊詠庭</div>
+  <a class="link" href="https://docs.google.com/spreadsheets/d/14pmbdZVD1s805t3BJaMt-MErqP16haZdkVGpIGlDyQs/edit?gid=0#gid=0" target="_blank">APCS奮戰歷程表 →</a>
+</div>
+
+<!-- 流程圖 -->
+<div class="steps" id="steps">
+  <div class="step">
+    <div class="circle">1</div>
+    <p>用 Flask 創建網站</p>
+    <img src="1111.png" alt="步驟1圖片">
+  </div>
+  <div class="step">
+    <div class="circle">2</div>
+    <p>分別創造鏈接、圖片、文字部件</p>
+    <img src="2222.png" alt="步驟2圖片1">
+    <img src="3333.png" alt="步驟2圖片2">
+    <img src="5555.png" alt="步驟2圖片3">
+  </div>
+  <div class="step">
+    <div class="circle">3</div>
+    <p>增加動畫</p>
+    <img src="4444.png" alt="步驟3圖片">
+  </div>
+</div>
+
+<!-- 下方內容 -->
+<div class="content">
+  <div class="column" id="leftColumn">
+    <strong>遇到的難關網站部份：</strong><br>
+    所使用的程式模型、外部網站、及網頁排版，都是未曾學習過的部分，<br>
+    但運用 GPT 輔助，也逐步完成了網站雛形與基礎互動功能。<br><br>
+    <strong>APCS部份：</strong><br>
+    學習 Python 時，常常會忘記內建函式或模組的用法。透過 GPT 的提示和範例，我能快速找到解決方案，並學到更有效率的寫法。
+  </div>
+  <div class="column" id="rightColumn">
+    <strong>後續進程網站部份：</strong><br>
+    使用 GitHub Pages 發佈成可公開搜尋的網站，並逐步完善互動性與實用內容。<br><br>
+    <strong>APCS部份：</strong><br>
+    完成 APCS 考試並持續進修演算法能力。<br><br>
+    <strong>願景：</strong><br>
+    增設 StarCraft 2 人工 AI 項目，融合網頁技術與智能決策模型。
+  </div>
+</div>
+
+<!-- 底部圖片與文字 -->
+<div class="bottom">
+  <img src="https://bocchi.rocks/omnibus/assets/img/page/character/ikuyo/image_movienew.png" alt="我的圖片">
+  <span>謝謝大家</span>
+</div>
+
+<script>
+const apcsLink = document.querySelector('.link');
+const steps = document.querySelectorAll('#steps .step');
+const columns = document.querySelectorAll('.column');
+
+apcsLink.addEventListener('animationend', () => {
+  steps.forEach((step, index) => {
+    setTimeout(() => {
+      step.style.opacity = '1';
+      step.style.transform = 'translateY(0)';
+      const imgs = step.querySelectorAll('img');
+      imgs.forEach(img => {
+        img.style.opacity = '1';
+        img.style.transform = 'translateY(0)';
+      });
+    }, index * 1200);
+  });
+
+  columns.forEach((col, index) => {
+    setTimeout(() => {
+      col.classList.add('show');
+    }, steps.length * 1200 + index * 1500);
+  });
+});
+</script>
+
+</body>
+</html>
