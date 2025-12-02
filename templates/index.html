@@ -7,26 +7,25 @@
 <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600;800&family=Noto+Sans+TC:wght@400;700&display=swap" rel="stylesheet">
 <style>
 *{box-sizing:border-box;margin:0;padding:0}
+html,body{height:100%; overflow-x:hidden;}
 body{
   font-family:'Orbitron','Noto Sans TC',sans-serif;
-  background: #7dd0e2; /* 水空色統一底色 */
+  background: #0a1c2c;
   color:#e8f6ff;
-  overflow-x:hidden;
 }
 
-/* 導覽列 */
+/* ===== 導覽列 ===== */
 header.navbar{
   position:sticky;top:0;z-index:1000;
   background:linear-gradient(135deg,#005b6a,#008393);
   display:flex;justify-content:space-between;align-items:center;
   padding:15px 20px;box-shadow:0 4px 15px rgba(0,0,0,0.3);
 }
-header.navbar .logo{
-  display:flex;align-items:center;gap:12px;
-}
 header.navbar .logo span{
-  font-size:1.8rem;font-weight:800;color:#00ffff;
-  text-shadow:0 0 8px #00ffff;
+  font-size:1.8rem;
+  font-weight:800;
+  text-shadow:0 0 6px #00ffff,0 0 12px #00ffff,0 0 18px #00ffff,0 0 30px #00ffff;
+  animation:footer-glow 2.5s ease-in-out infinite alternate;
 }
 header.navbar .nav-links a{
   color:#00ffff;text-decoration:none;font-weight:600;margin-left:18px;
@@ -36,141 +35,191 @@ header.navbar .nav-links a::after{
   content:"";position:absolute;bottom:-3px;left:0;width:0;height:2px;background:#00ffff;transition:.25s;
 }
 header.navbar .nav-links a:hover::after{width:100%;}
-header.navbar .nav-links a:hover{text-shadow:0 0 8px #00ffff;}
+header.navbar .nav-links a:hover{text-shadow:0 0 12px #00ffff, 0 0 20px #00ffff;}
 
-/* 主內容 */
-main{padding:80px 10% 40px; display:grid; grid-template-columns:1fr; gap:30px;}
+/* ===== 主內容 ===== */
+main{
+  padding:80px 10% 40px; 
+  display:grid; 
+  grid-template-columns:1fr; 
+  gap:30px;
+}
 h1.main-title{
   text-align:center;font-size:3rem;text-transform:uppercase;
-  background:linear-gradient(90deg,#FFDD55	,	#FFFF33,	#BBFF00);
+  background:linear-gradient(90deg,#FFDD55,#FFFF33,#BBFF00);
   -webkit-background-clip:text;-webkit-text-fill-color:transparent;
   animation:glow 2.5s ease-in-out infinite alternate;
 }
-@keyframes glow{from{filter:drop-shadow(0 0 5px #00ffff)}to{filter:drop-shadow(0 0 25px #00ffff)}}
+@keyframes glow{
+  0%{filter:drop-shadow(0 0 5px #00ffff);}
+  100%{filter:drop-shadow(0 0 30px #00ffff);}
+}
 
-/* 卡片 (電競風) */
+/* 卡片 */
 .card{
   background:linear-gradient(160deg,#07142a,#020a1a);
   border:1px solid rgba(0,255,255,.2);
-  border-radius:20px;padding:25px;transition:.4s;
-  box-shadow:0 0 20px rgba(0,150,255,.2);
+  border-radius:20px;
+  padding:25px;
+  transition:.5s;
+  box-shadow:0 0 25px rgba(0,150,255,.3), 0 0 60px rgba(0,255,255,.1) inset;
 }
 .card:hover{
-  transform:translateY(-10px) scale(1.02);
-  box-shadow:0 0 35px rgba(0,255,255,.6);
+  transform:translateY(-12px) scale(1.03);
+  box-shadow:0 0 45px rgba(0,255,255,.6), 0 0 80px rgba(0,255,255,.2) inset;
 }
 .card h3{margin-bottom:10px;color:#00ffff;}
 .card p{line-height:1.6;font-family:'Noto Sans TC',sans-serif;}
 
-/* 流程圖 (電競文字 + 量子動畫) */
-.quantum{
-  background: transparent; /* 讓底色透過水空 */
-  color:#e6edf3;
-  padding:60px 20px; position:relative; overflow:hidden;
-}
-.quantum::before{
-  content:"";position:absolute;inset:0;z-index:0;
-  background:
-    radial-gradient(2px 2px at 20% 30%, #58a6ff88, transparent),
-    radial-gradient(1px 1px at 80% 50%, #58a6ff44, transparent),
-    radial-gradient(2px 2px at 60% 80%, #00d8ff44, transparent),
-    radial-gradient(1px 1px at 40% 70%, #3bc9db55, transparent);
-  animation: stars 10s linear infinite alternate;
-}
-@keyframes stars{0%{transform:scale(1)}50%{transform:scale(1.03)}100%{transform:scale(1)}}
-.quantum-inner{max-width:1200px;margin:0 auto;position:relative; z-index:2;}
-.quantum h2{color:#00eaff;text-align:center;margin-bottom:40px;text-shadow:0 0 12px #00ffff;}
-
-.flow-container{
-  display:flex; justify-content:space-between; align-items:center;
-  gap:20px; flex-wrap:nowrap; width:100%; max-width:100%; overflow:hidden;
-}
-@media (max-width:900px){
-  .flow-container{flex-direction:column;align-items:center;gap:18px;}
-}
-
-.step{
-  position:relative;background: radial-gradient(circle at center, rgba(50,150,255,0.4), rgba(14,40,10,0.9));
-  border:1px solid rgba(88,166,255,0.5);
-  border-radius:50%; width:150px;height:150px;
-  display:flex;flex-direction:column;justify-content:center;align-items:center;
-  box-shadow:0 0 25px rgba(107,255,88,0.35), inset 0 0 20px rgba(88,166,255,0.3);
-  overflow:hidden; transition:0.5s;
-}
-.step::before{
-  content:""; position:absolute; top:-30%; left:-30%; width:160%; height:160%;
-  background:radial-gradient(circle, rgba(88,166,255,0.25), transparent 70%);
-  animation:pulse 5s infinite ease-in-out;
-}
-@keyframes pulse{0%,100%{transform:scale(1);opacity:0.5}50%{transform:scale(1.2);opacity:1}}
-.step:hover{transform:scale(1.15);box-shadow:0 0 40px rgba(0,255,255,0.7), inset 0 0 28px rgba(0,255,255,0.6);}
-.step h3{color:#00eaff;font-size:18px;margin:0;text-align:center;text-shadow:0 0 12px #00ffff;}
-.step p{color:#b9d9ff;font-size:13px;margin-top:5px;text-align:center;}
-
-.arrow{
-  flex:1;height:4px;min-width:30px;
-  background:linear-gradient(90deg, transparent, #00eaff, transparent);
-  animation:flow 2s linear infinite; position:relative;
-}
-.arrow::after{
-  content:"➤"; position:absolute; right:-10px; top:-16px;
-  font-size:28px;color:#00ffff;text-shadow:0 0 12px #00ffff;
-  animation:arrowglow 1.5s ease-in-out infinite alternate;
-}
-@keyframes flow{0%{background-position:-120px}100%{background-position:220px}}
-@keyframes arrowglow{from{opacity:0.6;text-shadow:0 0 6px #00ffff}to{opacity:1;text-shadow:0 0 22px #00ffff}}
-
-/* 底部 */
+/* ===== Footer ===== */
 footer.bottom{
-  display:flex;flex-direction:column;align-items:center;gap:25px;
-  background-color: transparent; /* 水空色透過背景 */
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  gap:25px;
+  background-color: transparent;
   padding:50px 20px;
   border-radius:15px;
 }
-
-/* TIM 文字鏈結 */
-.footer-link{
-  font-size:32px;color:#00ffff;font-weight:700;text-shadow:0 0 12px #00ffff;
-  text-decoration:none;transition:all 0.3s ease;
-}
-.footer-link:hover{text-shadow:0 0 25px #00ffff;}
-
-/* YouTube 圖片鏈結 */
-.footer-yt img{
-  width:160px;border-radius:15px;transition:transform 0.5s ease;
-}
-.footer-yt img:hover{transform:scale(1.2);}
-
-/* 女生圖片 + 感謝瀏覽 */
 .footer-character{
-  display:flex;align-items:center;gap:25px;
-  background-color:#7dd0e2; /* 水空色底 */
-  padding: 20px;
-  border-radius: 15px;
+  display:flex;
+  align-items:center;
+  gap:25px;
+  background: linear-gradient(180deg, #0a2233 0%, #0d2a44 60%, #0a2233 100%);
+  padding: 22px 28px;
+  border-radius: 18px;
+  border: 3px solid;
+  border-image: linear-gradient(135deg,#ffd700,#ffec8b,#cfa300) 1;
+  box-shadow: 0 18px 45px rgba(0,0,0,0.55), inset 0 0 28px rgba(255,240,180,0.18);
+  width: calc(100% - 40px);
+  max-width:1100px;
+  animation:float 4s ease-in-out infinite alternate;
 }
-.footer-character img{
-  width:400px; /* 女生圖片 300pt */
+.footer-character img.character{
+  width:400px;
   border-radius:15px;
-  box-shadow:0 0 20px rgba(0,0,0,0.5);
-  transition:transform 0.5s ease;
+  transform-origin:center;
+  box-shadow: 0 20px 60px rgba(0,0,0,0.7), 0 6px 18px rgba(0,0,0,0.5), 0 0 40px #00ffff inset;
+  transition:transform .45s ease, box-shadow .45s ease;
+  z-index:3;
 }
-.footer-character img:hover{transform:rotate(-20deg);}
-.footer-character span{
-  font-size:100pt;color:#ffffff;font-weight:700;text-shadow:0 0 25px #00ffff;
+.footer-character img.character:hover{
+  transform:translateY(-8px) rotate(-10deg);
+  box-shadow: 0 25px 80px #00ffff inset, 0 0 50px #00ffff;
+}
+
+.female-text{
+  display:flex;
+  flex-direction:column;
+  gap:12px;
+  align-items:flex-start;
+  padding:12px 18px;
+  border-radius:10px;
+  background: rgba(0, 0, 0, 0.4);
+  z-index:10;
+  width:100%;
+  text-shadow: 0 0 6px #00ffff,0 0 12px #00ffff,0 0 18px #00ffff;
+}
+.big-thanks{
+  font-size:72px;
+  font-weight:800;
+}
+.channel-title{
+  font-size:36px; 
+  font-weight:700;
+}
+.youtube-link a{
+  font-size:32px;
+  font-weight:600;
+  text-decoration:underline;
+}
+.youtube-icon img{
+  width:180px;
+  border-radius:12px;
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+.youtube-icon img:hover{
+  transform: scale(1.2);
+  box-shadow:0 0 25px #FFD700, 0 0 35px rgba(255,215,0,0.5);
+}
+
+/* ===== 量子流程球 ===== */
+.quantum-flow{
+  width:100%;
+  padding:0 10px;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  gap:10px;
+}
+.quantum-step{
+  flex:1;
+  aspect-ratio:1/1;
+  max-width:220px;
+  background:rgba(20,30,50,0.95);
+  border-radius:50%;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  align-items:center;
+  color:#00ffff;
+  text-align:center;
+  font-family:"Orbitron","Noto Sans TC";
+  position:relative;
+  overflow:hidden;
+  animation:float 6s ease-in-out infinite alternate;
+  box-shadow: 0 0 25px #00ffff inset, 0 0 50px #00ffff;
+  transition: transform 0.4s ease, box-shadow 0.4s ease;
+}
+.quantum-step:hover{
+  transform: scale(1.15) translateY(-10px);
+  box-shadow: 0 0 35px #00ffff inset, 0 0 70px #00ffff, 0 0 50px #00ffff inset;
+}
+.quantum-step h3{ font-size:22px; margin:5px 0; }
+.quantum-step span{ font-size:14px; opacity:0.9; text-shadow:0 0 6px #00ffff; }
+
+/* 流動粒子特效 */
+.quantum-step::before{
+  content:'';
+  position:absolute;
+  width:300%;
+  height:300%;
+  background:radial-gradient(circle, #00ffff 1%, transparent 1%) repeat;
+  background-size:12px 12px;
+  animation:particle 8s linear infinite;
+  opacity:0.4;
+  z-index:0;
+  filter:blur(1.5px);
+}
+
+/* 浮動動畫 */
+@keyframes particle{
+  0%{transform:translate(0,0);}
+  50%{transform:translate(60px,60px);}
+  100%{transform:translate(0,0);}
+}
+@keyframes float{
+  0%{transform:translateY(0px);}
+  50%{transform:translateY(-15px);}
+  100%{transform:translateY(0px);}
+}
+
+/* Logo & Footer 光暈 */
+@keyframes footer-glow{
+  0%{text-shadow:0 0 6px #00ffff,0 0 12px #00ffff,0 0 18px #00ffff,0 0 30px #00ffff;}
+  50%{text-shadow:0 0 10px #00ffff,0 0 20px #00ffff,0 0 28px #00ffff,0 0 45px #00ffff;}
+  100%{text-shadow:0 0 6px #00ffff,0 0 12px #00ffff,0 0 18px #00ffff,0 0 30px #00ffff;}
 }
 
 /* 捲動動畫 */
-.reveal{opacity:0;transform:translateY(40px);transition:all .8s cubic-bezier(.2,.9,.2,1);}
-.show{opacity:1;transform:translateY(0);}
+.reveal{opacity:0; transform:translateY(40px); transition:all .8s cubic-bezier(.2,.9,.2,1);}
+.show{opacity:1; transform:translateY(0);}
 </style>
 </head>
 <body>
 
 <header class="navbar">
-  <div class="logo">
-    <img src="https://i.imgur.com/3ZQ3ZQp.png" alt="Logo">
-    <span>StarCraft 2 AI</span>
-  </div>
+  <div class="logo"><span>尖端網站開發及SC 2 AI</span></div>
   <nav class="nav-links">
     <a href="#">電競戰報</a>
     <a href="#">AI 深度學習</a>
@@ -178,58 +227,83 @@ footer.bottom{
 </header>
 
 <main>
-  <h1 style='color:#FFFF00 !important ; font-size:60px !important;' class="main-title reveal">StarCraft 2 AI 電競展示</h1>
+  <h1 class="main-title reveal show" style="color:#FFFF00 !important ; font-size:60px !important;">
+    StarCraft 2 AI
+  </h1>
 
-  <div class="card reveal">
-    <h3>🤖 AI 對戰系統</h3>
-    <p>整合 SC2 API 與神經網路模型，使 AI 能夠即時分析戰局並自主強化策略。</p>
+  <div class="card reveal show">
+    <h3>🤖 SC 2 AI</h3>
+    <p>StarCraft 2 是一款2010年發布的RTS（即時戰略）神作，以快節奏、高度競技性、高難度操作與其需要一生學習的深度，被稱為RTS類型的巔峰之作，更是電競史上重要作品。</p>
   </div>
-  <div class="card reveal">
+
+  <div class="card reveal show">
     <h3>⚡ 戰術學習模組</h3>
     <p>透過深度強化學習，不斷記錄戰鬥結果，優化兵種搭配與行軍路線。</p>
   </div>
-  <div class="card reveal">
+
+  <div class="card reveal show">
     <h3>🎮 電競視覺介面</h3>
     <p>高科技 HUD 風格介面，打造專業電競戰場展示空間。</p>
   </div>
-</main>
 
-<section class="quantum reveal">
-  <div class="quantum-inner">
-    <h2 style="color: #FFFF00; font-size: 60px;">StarCraft 2 AI 原理流程</h2>
-    <div class="flow-container">
-      <div class="step"><h3>1. 構思</h3><p>啟動量子靈感場</p></div>
-      <div class="arrow"></div>
-      <div class="step"><h3>2. 規劃</h3><p>波函數收斂設計</p></div>
-      <div class="arrow"></div>
-      <div class="step"><h3>3. 設計</h3><p>建立交互界面模型</p></div>
-      <div class="arrow"></div>
-      <div class="step"><h3>4. 開發</h3><p>量子邏輯核心生成</p></div>
-      <div class="arrow"></div>
-      <div class="step"><h3>5. 測試</h3><p>波動干涉校正</p></div>
-      <div class="arrow"></div>
-      <div class="step"><h3>6. 上線</h3><p>啟動全域疊加運算</p></div>
+  <!-- 量子流程球 -->
+  <div class="quantum-flow reveal show">
+    <div class="quantum-step">
+      <h3>STEP 1</h3>
+      <span>數據輸入</span>
+    </div>
+    <div class="quantum-step">
+      <h3>STEP 2</h3>
+      <span>量子編譯</span>
+    </div>
+    <div class="quantum-step">
+      <h3>STEP 3</h3>
+      <span>神經處理</span>
+    </div>
+    <div class="quantum-step">
+      <h3>STEP 4</h3>
+      <span>決策推演</span>
+    </div>
+    <div class="quantum-step">
+      <h3>STEP 5</h3>
+      <span>模擬測試</span>
+    </div>
+    <div class="quantum-step">
+      <h3>STEP 6</h3>
+      <span>結果輸出</span>
     </div>
   </div>
-</section>
 
-<footer class="bottom reveal">
-  <a href="https://www.youtube.com/@Timsister-SC-MC" class="footer-link" target="_blank">TIM生活頻道</a>
-  <div class="footer-yt">
-    <a href="https://www.youtube.com/@Timsister-SC-MC" target="_blank">
-      <img src="https://yt3.googleusercontent.com/WQbWpP1HVWzKo-B85yjN_hsAeWJEWXbP9qnIDIqW90Uv0Sog7wnz1W5TGCL3CI9YGHoDhonGxQ=s160-c-k-c0x00ffffff-no-rj" alt="YT">
-    </a>
-  </div>
+</main>
+
+<footer class="bottom reveal show">
   <div class="footer-character">
-    <img src="https://bocchi.rocks/omnibus/assets/img/page/character/ikuyo/image_movienew.png" alt="角色">
-    <span>感謝瀏覽</span>
+    <img src="https://bocchi.rocks/omnibus/assets/img/page/character/ikuyo/image_movienew.png" alt="角色" class="character">
+    <div class="female-text">
+      <div class="big-thanks">感謝瀏覽</div>
+      <div class="channel-title">TIM生活頻道</div>
+      <div class="youtube-link">
+        <a href="https://www.youtube.com/@Timsister-SC-MC" target="_blank">YouTube 頻道連結</a>
+      </div>
+      <div class="youtube-icon">
+        <a href="https://www.youtube.com/@Timsister-SC-MC" target="_blank">
+          <img src="https://yt3.googleusercontent.com/WQbWpP1HVWzKo-B85yjN_hsAeWJEWXbP9qnIDIqW90Uv0Sog7wnz1W5TGCL3CI9YGHoDhonGxQ=s160-c-k-c0x00ffffff-no-rj"
+               alt="YouTube 頻道圖示">
+        </a>
+      </div>
+    </div>
   </div>
 </footer>
 
 <script>
 (function(){
   const reveals=document.querySelectorAll('.reveal');
-  const revealOnScroll=()=>{reveals.forEach(el=>{const rect=el.getBoundingClientRect();if(rect.top<window.innerHeight-80)el.classList.add('show');});};
+  const revealOnScroll=()=>{
+    reveals.forEach(el=>{
+      const rect=el.getBoundingClientRect();
+      if(rect.top<window.innerHeight-80) el.classList.add('show');
+    });
+  };
   window.addEventListener('scroll',revealOnScroll);
   window.addEventListener('load',revealOnScroll);
 })();
