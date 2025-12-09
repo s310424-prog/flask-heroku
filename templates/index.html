@@ -8,228 +8,94 @@
 <style>
 *{box-sizing:border-box;margin:0;padding:0}
 html,body{height:100%; overflow-x:hidden;}
-body{
-  font-family:'Orbitron','Noto Sans TC',sans-serif;
-  background: #0a1c2c;
-  color:#e8f6ff;
-}
+body{ font-family:'Orbitron','Noto Sans TC',sans-serif; background: #0a1c2c; color:#e8f6ff; }
 
 /* ===== 導覽列 ===== */
-header.navbar{
-  position:sticky;top:0;z-index:1000;
-  background:linear-gradient(135deg,#005b6a,#008393);
-  display:flex;justify-content:space-between;align-items:center;
-  padding:15px 20px;box-shadow:0 4px 15px rgba(0,0,0,0.3);
-}
-header.navbar .logo span{
-  font-size:1.8rem;
-  font-weight:800;
-  text-shadow:0 0 6px #00ffff,0 0 12px #00ffff,0 0 18px #00ffff,0 0 30px #00ffff;
-  animation:footer-glow 2.5s ease-in-out infinite alternate;
-}
-header.navbar .nav-links a{
-  color:#00ffff;text-decoration:none;font-weight:600;margin-left:18px;
-  position:relative;transition:.25s;
-}
-header.navbar .nav-links a::after{
-  content:"";position:absolute;bottom:-3px;left:0;width:0;height:2px;background:#00ffff;transition:.25s;
-}
-header.navbar .nav-links a:hover::after{width:100%;}
+header.navbar{ position:sticky;top:0;z-index:1000; background:linear-gradient(135deg,#005b6a,#008393); display:flex;justify-content:space-between;align-items:center; padding:15px 20px;box-shadow:0 4px 15px rgba(0,0,0,0.3); }
+header.navbar .logo span{ font-size:1.8rem; font-weight:800; text-shadow:0 0 6px #00ffff,0 0 12px #00ffff,0 0 18px #00ffff,0 0 30px #00ffff; animation:footer-glow 2.5s ease-in-out infinite alternate; }
+header.navbar .nav-links a{ color:#00ffff;text-decoration:none;font-weight:600;margin-left:18px; position:relative;transition:.25s; display:flex; align-items:center; }
+header.navbar .nav-links a img{ width:32px; height:32px; border-radius:4px; margin-right:6px; transition:.25s; }
+header.navbar .nav-links a:hover::after{width:100%;} 
 header.navbar .nav-links a:hover{text-shadow:0 0 12px #00ffff, 0 0 20px #00ffff;}
 
 /* ===== 主內容 ===== */
-main{
-  padding:80px 10% 40px; 
-  display:grid; 
-  grid-template-columns:1fr; 
-  gap:30px;
-}
-h1.main-title{
-  text-align:center;font-size:3rem;text-transform:uppercase;
-  background:linear-gradient(90deg,#FFDD55,#FFFF33,#BBFF00);
-  -webkit-background-clip:text;-webkit-text-fill-color:transparent;
-  animation:glow 2.5s ease-in-out infinite alternate;
-}
-@keyframes glow{
-  0%{filter:drop-shadow(0 0 5px #00ffff);}
-  100%{filter:drop-shadow(0 0 30px #00ffff);}
-}
+main{ padding:80px 10% 40px; display:grid; grid-template-columns:1fr; gap:30px; }
+h1.main-title{ text-align:center;font-size:3rem;text-transform:uppercase; background:linear-gradient(90deg,#FFDD55,#FFFF33,#BBFF00); background-clip: text; -webkit-background-clip: text; color: transparent; -webkit-text-fill-color: transparent; animation:glow 2.5s ease-in-out infinite alternate; }
+@keyframes glow{ 0%{filter:drop-shadow(0 0 5px #00ffff);} 100%{filter:drop-shadow(0 0 30px #00ffff);} }
 
 /* 卡片 */
-.card{
-  background:linear-gradient(160deg,#07142a,#020a1a);
-  border:1px solid rgba(0,255,255,.2);
-  border-radius:20px;
-  padding:25px;
-  transition:.5s;
-  box-shadow:0 0 25px rgba(0,150,255,.3), 0 0 60px rgba(0,255,255,.1) inset;
-}
-.card:hover{
-  transform:translateY(-12px) scale(1.03);
-  box-shadow:0 0 45px rgba(0,255,255,.6), 0 0 80px rgba(0,255,255,.2) inset;
-}
+.card{ background:linear-gradient(160deg,#07142a,#020a1a); border:1px solid rgba(0,255,255,.2); border-radius:20px; padding:25px; transition:.5s; box-shadow:0 0 25px rgba(0,150,255,.3), 0 0 60px rgba(0,255,255,.1) inset; }
+.card:hover{ transform:translateY(-12px) scale(1.03); box-shadow:0 0 45px rgba(0,255,255,.6), 0 0 80px rgba(0,255,255,.2) inset; }
 .card h3{margin-bottom:10px;color:#00ffff;}
 .card p{line-height:1.6;font-family:'Noto Sans TC',sans-serif;}
 
 /* ===== Footer ===== */
-footer.bottom{
-  display:flex;
-  flex-direction:column;
-  align-items:center;
-  gap:25px;
-  background-color: transparent;
-  padding:50px 20px;
-  border-radius:15px;
-}
-.footer-character{
-  display:flex;
-  align-items:center;
-  gap:25px;
-  background: linear-gradient(180deg, #0a2233 0%, #0d2a44 60%, #0a2233 100%);
-  padding: 22px 28px;
-  border-radius: 18px;
-  border: 3px solid;
-  border-image: linear-gradient(135deg,#ffd700,#ffec8b,#cfa300) 1;
-  box-shadow: 0 18px 45px rgba(0,0,0,0.55), inset 0 0 28px rgba(255,240,180,0.18);
-  width: calc(100% - 40px);
-  max-width:1100px;
-  animation:float 4s ease-in-out infinite alternate;
-}
-.footer-character img.character{
-  width:400px;
-  border-radius:15px;
-  transform-origin:center;
-  box-shadow: 0 20px 60px rgba(0,0,0,0.7), 0 6px 18px rgba(0,0,0,0.5), 0 0 40px #00ffff inset;
-  transition:transform .45s ease, box-shadow .45s ease;
-  z-index:3;
-}
-.footer-character img.character:hover{
-  transform:translateY(-8px) rotate(-10deg);
-  box-shadow: 0 25px 80px #00ffff inset, 0 0 50px #00ffff;
-}
-
-.female-text{
-  display:flex;
-  flex-direction:column;
-  gap:12px;
-  align-items:flex-start;
-  padding:12px 18px;
-  border-radius:10px;
-  background: rgba(0, 0, 0, 0.4);
-  z-index:10;
-  width:100%;
-  text-shadow: 0 0 6px #00ffff,0 0 12px #00ffff,0 0 18px #00ffff;
-}
-.big-thanks{
-  font-size:72px;
-  font-weight:800;
-}
-.channel-title{
-  font-size:36px; 
-  font-weight:700;
-}
-.youtube-link a{
-  font-size:32px;
-  font-weight:600;
-  text-decoration:underline;
-}
-.youtube-icon img{
-  width:180px;
-  border-radius:12px;
-  transition: transform 0.3s, box-shadow 0.3s;
-}
-.youtube-icon img:hover{
-  transform: scale(1.2);
-  box-shadow:0 0 25px #FFD700, 0 0 35px rgba(255,215,0,0.5);
-}
+footer.bottom{ display:flex; flex-direction:column; align-items:center; gap:25px; background-color: transparent; padding:50px 20px; border-radius:15px; }
+.footer-character{ display:flex; align-items:center; gap:25px; background: linear-gradient(180deg, #0a2233 0%, #0d2a44 60%, #0a2233 100%); padding: 22px 28px; border-radius: 18px; border: 3px solid; border-image: linear-gradient(135deg,#ffd700,#ffec8b,#cfa300) 1; box-shadow: 0 18px 45px rgba(0,0,0,0.55), inset 0 0 28px rgba(255,240,180,0.18); width: calc(100% - 40px); max-width:1100px; animation:float 4s ease-in-out infinite alternate; }
+.footer-character img.character{ width:400px; border-radius:15px; transform-origin:center; box-shadow: 0 20px 60px rgba(0,0,0,0.7), 0 6px 18px rgba(0,0,0,0.5), 0 0 40px #00ffff inset; transition:transform .45s ease, box-shadow .45s ease; z-index:3; }
+.footer-character img.character:hover{ transform:translateY(-8px) rotate(-10deg); box-shadow: 0 25px 80px #00ffff inset, 0 0 50px #00ffff; }
+.female-text{ display:flex; flex-direction:column; gap:12px; align-items:flex-start; padding:12px 18px; border-radius:10px; background: rgba(0, 0, 0, 0.4); z-index:10; width:100%; text-shadow: 0 0 6px #00ffff,0 0 12px #00ffff,0 0 18px #00ffff; }
+.big-thanks{ font-size:72px; font-weight:800; }
+.channel-title{ font-size:36px; font-weight:700; }
 
 /* ===== 量子流程球 ===== */
-.quantum-flow{
-  width:100%;
-  padding:0 10px;
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-  gap:10px;
-}
-.quantum-step{
-  flex:1;
-  aspect-ratio:1/1;
-  max-width:220px;
-  background:rgba(20,30,50,0.95);
-  border-radius:50%;
-  display:flex;
-  flex-direction:column;
-  justify-content:center;
-  align-items:center;
-  color:#00ffff;
-  text-align:center;
-  font-family:"Orbitron","Noto Sans TC";
-  position:relative;
-  overflow:hidden;
-  animation:float 6s ease-in-out infinite alternate;
-  box-shadow: 0 0 25px #00ffff inset, 0 0 50px #00ffff;
-  transition: transform 0.4s ease, box-shadow 0.4s ease;
-}
-.quantum-step:hover{
-  transform: scale(1.15) translateY(-10px);
-  box-shadow: 0 0 35px #00ffff inset, 0 0 70px #00ffff, 0 0 50px #00ffff inset;
-}
+.quantum-flow{ width:100%; padding:0 10px; display:flex; justify-content:space-between; align-items:center; gap:10px; }
+.quantum-step{ flex:1; aspect-ratio:1/1; max-width:220px; background:rgba(20,30,50,0.95); border-radius:50%; display:flex; flex-direction:column; justify-content:center; align-items:center; color:#00ffff; text-align:center; font-family:"Orbitron","Noto Sans TC"; position:relative; overflow:hidden; animation:float 6s ease-in-out infinite alternate; box-shadow: 0 0 25px #00ffff inset, 0 0 50px #00ffff; transition: transform 0.4s ease, box-shadow 0.4s ease; }
+.quantum-step:hover{ transform: scale(1.15) translateY(-10px); box-shadow: 0 0 35px #00ffff inset, 0 0 70px #00ffff, 0 0 50px #00ffff inset; }
 .quantum-step h3{ font-size:22px; margin:5px 0; }
 .quantum-step span{ font-size:14px; opacity:0.9; text-shadow:0 0 6px #00ffff; }
+.quantum-step::before{ content:''; position:absolute; width:300%; height:300%; background:radial-gradient(circle, #00ffff 1%, transparent 1%) repeat; background-size:12px 12px; animation:particle 8s linear infinite; opacity:0.4; z-index:0; filter:blur(1.5px); }
 
-/* 流動粒子特效 */
-.quantum-step::before{
-  content:'';
-  position:absolute;
-  width:300%;
-  height:300%;
-  background:radial-gradient(circle, #00ffff 1%, transparent 1%) repeat;
-  background-size:12px 12px;
-  animation:particle 8s linear infinite;
-  opacity:0.4;
-  z-index:0;
-  filter:blur(1.5px);
-}
-
-/* 浮動動畫 */
-@keyframes particle{
-  0%{transform:translate(0,0);}
-  50%{transform:translate(60px,60px);}
-  100%{transform:translate(0,0);}
-}
-@keyframes float{
-  0%{transform:translateY(0px);}
-  50%{transform:translateY(-15px);}
-  100%{transform:translateY(0px);}
-}
-
-/* Logo & Footer 光暈 */
-@keyframes footer-glow{
-  0%{text-shadow:0 0 6px #00ffff,0 0 12px #00ffff,0 0 18px #00ffff,0 0 30px #00ffff;}
-  50%{text-shadow:0 0 10px #00ffff,0 0 20px #00ffff,0 0 28px #00ffff,0 0 45px #00ffff;}
-  100%{text-shadow:0 0 6px #00ffff,0 0 12px #00ffff,0 0 18px #00ffff,0 0 30px #00ffff;}
-}
+@keyframes particle{ 0%{transform:translate(0,0);} 50%{transform:translate(60px,60px);} 100%{transform:translate(0,0);} }
+@keyframes float{ 0%{transform:translateY(0px);} 50%{transform:translateY(-15px);} 100%{transform:translateY(0px);} }
+@keyframes footer-glow{ 0%{text-shadow:0 0 6px #00ffff,0 0 12px #00ffff,0 0 18px #00ffff,0 0 30px #00ffff;} 50%{text-shadow:0 0 10px #00ffff,0 0 20px #00ffff,0 0 28px #00ffff,0 0 45px #00ffff;} 100%{text-shadow:0 0 6px #00ffff,0 0 12px #00ffff,0 0 18px #00ffff,0 0 30px #00ffff;} }
 
 /* 捲動動畫 */
 .reveal{opacity:0; transform:translateY(40px); transition:all .8s cubic-bezier(.2,.9,.2,1);}
 .show{opacity:1; transform:translateY(0);}
+
+/* ===== YouTube 最新影片區 ===== */
+#yt-latest{
+  font-family: Arial, sans-serif; 
+  max-width:1000px; 
+  margin:auto; 
+  padding:20px 10px; 
+  color:#fff; 
+}
+#yt-videos {
+  display:flex; 
+  justify-content:space-between; 
+  gap:10px; 
+}
+#yt-videos .video-card {
+  flex:1; 
+  max-width:calc((100% - 20px)/3);
+}
+#yt-videos .video-card img { width:100%; height:auto; border-radius:8px; display:block; }
+#yt-videos .video-card .title { margin-top:4px; font-weight:bold; text-decoration:underline; color:#fff; }
+#yt-videos .video-card .date { font-size:12px; color:#ccc; margin-top:2px; }
+
+/* ===== 粒子背景 & 空白區域 ===== */
+#particle-canvas{ position:fixed; top:0; left:0; width:100%; height:100%; z-index:-1; }
+.spacer{ height:500px; }
 </style>
 </head>
 <body>
+<canvas id="particle-canvas"></canvas>
 
 <header class="navbar">
   <div class="logo"><span>尖端網站開發及SC 2 AI</span></div>
   <nav class="nav-links">
-    <a href="#">電競戰報</a>
-    <a href="#">AI 深度學習</a>
+    <a href="https://www.youtube.com/@Timsister-SC-MC" target="_blank">
+      <img src="https://yt3.googleusercontent.com/WQbWpP1HVWzKo-B85yjN_hsAeWJEWXbP9qnIDIqW90Uv0Sog7wnz1W5TGCL3CI9YGHoDhonGxQ=s88-c-k-c0x00ffffff-no-rj" 
+           alt="YouTube 頻道圖示">
+      YouTube 頻道
+    </a>
   </nav>
 </header>
 
 <main>
-  <h1 class="main-title reveal show" style="color:#FFFF00 !important ; font-size:60px !important;">
-    StarCraft 2 AI
-  </h1>
+  <h1 class="main-title reveal show" style="color:#FFFF00 !important ; font-size:60px !important;"> StarCraft 2 AI </h1>
 
   <div class="card reveal show">
     <h3>🤖 SC 2 AI</h3>
@@ -246,34 +112,67 @@ footer.bottom{
     <p>高科技 HUD 風格介面，打造專業電競戰場展示空間。</p>
   </div>
 
-  <!-- 量子流程球 -->
   <div class="quantum-flow reveal show">
-    <div class="quantum-step">
-      <h3>STEP 1</h3>
-      <span>數據輸入</span>
-    </div>
-    <div class="quantum-step">
-      <h3>STEP 2</h3>
-      <span>量子編譯</span>
-    </div>
-    <div class="quantum-step">
-      <h3>STEP 3</h3>
-      <span>神經處理</span>
-    </div>
-    <div class="quantum-step">
-      <h3>STEP 4</h3>
-      <span>決策推演</span>
-    </div>
-    <div class="quantum-step">
-      <h3>STEP 5</h3>
-      <span>模擬測試</span>
-    </div>
-    <div class="quantum-step">
-      <h3>STEP 6</h3>
-      <span>結果輸出</span>
-    </div>
+    <div class="quantum-step"><h3>STEP 1</h3><span>數據輸入</span></div>
+    <div class="quantum-step"><h3>STEP 2</h3><span>量子編譯</span></div>
+    <div class="quantum-step"><h3>STEP 3</h3><span>神經處理</span></div>
+    <div class="quantum-step"><h3>STEP 4</h3><span>決策推演</span></div>
+    <div class="quantum-step"><h3>STEP 5</h3><span>模擬測試</span></div>
+    <div class="quantum-step"><h3>STEP 6</h3><span>結果輸出</span></div>
   </div>
 
+  <!-- YouTube 最新影片區 -->
+  <div id="yt-latest">
+    <h2>最新影片</h2>
+    <div id="yt-videos">
+      <div class="video-card">
+        <a href="https://www.youtube.com/watch?v=lp0LUg0-k3k" target="_blank" style="text-decoration:none;">
+          <img src="https://img.youtube.com/vi/lp0LUg0-k3k/hqdefault.jpg" alt="video1">
+          <div class="title"></div>
+        </a>
+      </div>
+      <div class="video-card">
+        <a href="https://www.youtube.com/watch?v=aZd_zGaTdSU" target="_blank" style="text-decoration:none;">
+          <img src="https://img.youtube.com/vi/aZd_zGaTdSU/hqdefault.jpg" alt="video2">
+          <div class="title"></div>
+        </a>
+      </div>
+      <div class="video-card" id="dynamic-video-card"></div>
+    </div>
+    <div id="yt-status" style="margin-top:10px; color:#aaa;"></div>
+  </div>
+
+  <!-- ===== 新增五大功能區塊 ===== -->
+  <section id="extra-features" class="reveal show" style="margin:50px 10%; display:grid; grid-template-columns:1fr 1fr; gap:30px;">
+    <div class="card">
+      <h3>🎬 影片播放模組</h3>
+      <iframe width="100%" height="200" src="https://www.youtube.com/embed/lp0LUg0-k3k" title="影片示範" frameborder="0" allowfullscreen style="border-radius:8px;"></iframe>
+      <p>直接在網站播放，不必跳轉 YouTube。</p>
+    </div>
+    <div class="card">
+      <h3>📊 AI 戰績統計</h3>
+      <canvas id="ai-stats" width="400" height="200" style="background:#020a1a; border-radius:8px;"></canvas>
+      <p>勝率、兵種使用率、常用戰術示意。</p>
+    </div>
+    <div class="card">
+      <h3>💬 社群互動</h3>
+      <p>留言或討論區（示意）：</p>
+      <textarea placeholder="輸入留言..." style="width:100%; height:80px; border-radius:6px; padding:8px;"></textarea>
+      <button style="margin-top:6px; padding:6px 12px; background:#00ffff; color:#000; font-weight:600; border:none; border-radius:6px; cursor:pointer;">送出</button>
+    </div>
+    <div class="card">
+      <h3>✨ 視覺效果</h3>
+      <p>全頁粒子背景 + 滾動 reveal 動畫效果，增添科技感。</p>
+    </div>
+    <div class="card" style="grid-column:span 2;">
+      <h3>🔍 搜尋與篩選</h3>
+      <input type="text" placeholder="搜尋影片或文章..." style="width:70%; padding:8px; border-radius:6px; border:none;">
+      <button style="padding:8px 14px; margin-left:6px; background:#00ffff; color:#000; font-weight:600; border:none; border-radius:6px; cursor:pointer;">搜尋</button>
+      <p style="margin-top:6px;">可篩選 / 排序影片與卡片內容。</p>
+    </div>
+  </section>
+
+  <div class="spacer"></div>
 </main>
 
 <footer class="bottom reveal show">
@@ -282,31 +181,111 @@ footer.bottom{
     <div class="female-text">
       <div class="big-thanks">感謝瀏覽</div>
       <div class="channel-title">TIM生活頻道</div>
-      <div class="youtube-link">
-        <a href="https://www.youtube.com/@Timsister-SC-MC" target="_blank">YouTube 頻道連結</a>
-      </div>
-      <div class="youtube-icon">
-        <a href="https://www.youtube.com/@Timsister-SC-MC" target="_blank">
-          <img src="https://yt3.googleusercontent.com/WQbWpP1HVWzKo-B85yjN_hsAeWJEWXbP9qnIDIqW90Uv0Sog7wnz1W5TGCL3CI9YGHoDhonGxQ=s160-c-k-c0x00ffffff-no-rj"
-               alt="YouTube 頻道圖示">
-        </a>
-      </div>
     </div>
   </div>
 </footer>
 
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 <script>
+// reveal scroll
 (function(){
-  const reveals=document.querySelectorAll('.reveal');
-  const revealOnScroll=()=>{
-    reveals.forEach(el=>{
-      const rect=el.getBoundingClientRect();
-      if(rect.top<window.innerHeight-80) el.classList.add('show');
+  const reveals = document.querySelectorAll('.reveal');
+  const revealOnScroll = () => {
+    reveals.forEach(el => {
+      const rect = el.getBoundingClientRect();
+      if(rect.top < window.innerHeight - 80) el.classList.add('show');
     });
   };
-  window.addEventListener('scroll',revealOnScroll);
-  window.addEventListener('load',revealOnScroll);
+  window.addEventListener('scroll', revealOnScroll);
+  window.addEventListener('load', revealOnScroll);
 })();
+
+// YouTube 動態影片
+const CHANNEL_ID = 'UCvDttiUEqeT1axNVp4mgm7A';
+const API_KEY = 'AIzaSyCAfGutw2Dk6-lf59Km2FEurca15GBQOrg';
+const POLL_INTERVAL = 30000;
+
+async function fetchVideos() {
+  const url = `https://www.googleapis.com/youtube/v3/search?key=${API_KEY}&channelId=${CHANNEL_ID}&part=snippet,id&order=date&maxResults=1&type=video`;
+  const res = await fetch(url);
+  const data = await res.json();
+  return data.items.map(it => ({
+    id: it.id.videoId,
+    title: it.snippet.title,
+    published: it.snippet.publishedAt,
+    thumb: it.snippet.thumbnails.high.url
+  }));
+}
+
+function renderDynamicVideo(v) {
+  const container = document.getElementById('dynamic-video-card');
+  container.innerHTML = `
+    <a href="https://www.youtube.com/watch?v=${v.id}" target="_blank" style="color:#fff; text-decoration:none;">
+      <img src="${v.thumb}" alt="${v.title}">
+      <div class="title">${v.title}</div>
+      <div class="date">${new Date(v.published).toLocaleString()}</div>
+    </a>
+  `;
+}
+
+async function updateLoop(){
+  try{
+    const videos = await fetchVideos();
+    if (videos.length > 0) renderDynamicVideo(videos[0]);
+    document.getElementById('yt-status').textContent = `最後更新: ${new Date().toLocaleTimeString()}`;
+  } catch(e){
+    document.getElementById('yt-status').textContent = '更新失敗: '+e.message;
+  }
+}
+
+updateLoop();
+setInterval(updateLoop, POLL_INTERVAL);
+
+// Chart.js 統計
+const ctx = document.getElementById('ai-stats').getContext('2d');
+new Chart(ctx, {
+    type: 'bar',
+    data: {
+        labels: ['Terran','Zerg','Protoss'],
+        datasets: [{
+            label: '勝率 %',
+            data: [55, 62, 48],
+            backgroundColor: ['#00ffff','#ffdd55','#ff6a6a']
+        }]
+    },
+    options: {
+        responsive:true,
+        plugins:{legend:{display:false}},
+        scales:{y:{beginAtZero:true, max:100}}
+    }
+});
+https://github.com/s310424-prog/flask-heroku/blob/main/templates/index.html
+// 粒子背景
+const canvas = document.getElementById('particle-canvas');
+const ctx2 = canvas.getContext('2d');
+canvas.width = window.innerWidth;
+canvas.height = window.innerHeight;
+
+const particles = [];
+for(let i=0;i<150;i++){
+  particles.push({x:Math.random()*canvas.width, y:Math.random()*canvas.height, r:Math.random()*2+1, dx:(Math.random()-0.5)*0.7, dy:(Math.random()-0.5)*0.7});
+}
+
+function animateParticles(){
+  ctx2.clearRect(0,0,canvas.width,canvas.height);
+  particles.forEach(p=>{
+    ctx2.beginPath();
+    ctx2.arc(p.x,p.y,p.r,0,Math.PI*2);
+    ctx2.fillStyle='rgba(0,255,255,0.5)';
+    ctx2.fill();
+    p.x += p.dx; p.y += p.dy;
+    if(p.x<0||p.x>canvas.width)p.dx*=-1;
+    if(p.y<0||p.y>canvas.height)p.dy*=-1;
+  });
+  requestAnimationFrame(animateParticles);
+}
+animateParticles();
+window.addEventListener('resize',()=>{canvas.width=window.innerWidth; canvas.height=window.innerHeight;});
 </script>
 
 </body>
