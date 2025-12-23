@@ -6,7 +6,8 @@
 <title>StarCraft 2 AI｜電競科技展示</title>
 <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600;800&family=Noto+Sans+TC:wght@400;700&display=swap" rel="stylesheet">
 <style>
-*{box-sizing:border-box;margin:0;padding:0}
+/* ===== 基本樣式 ===== */
+*{box-sizing:border-box;margin:0;padding:0;}
 html,body{height:100%; overflow-x:hidden;}
 body{ font-family:'Orbitron','Noto Sans TC',sans-serif; background: #0a1c2c; color:#e8f6ff; }
 
@@ -21,9 +22,6 @@ header.navbar .nav-links a:hover{text-shadow:0 0 12px #00ffff, 0 0 20px #00ffff;
 /* ===== 主內容 ===== */
 main{ padding:80px 10% 40px; display:grid; grid-template-columns:1fr; gap:30px; }
 h1.main-title{ text-align:center;font-size:3rem;text-transform:uppercase; background:linear-gradient(90deg,#FFDD55,#FFFF33,#BBFF00); background-clip: text; -webkit-background-clip: text; color: transparent; -webkit-text-fill-color: transparent; animation:glow 2.5s ease-in-out infinite alternate; }
-@keyframes glow{ 0%{filter:drop-shadow(0 0 5px #00ffff);} 100%{filter:drop-shadow(0 0 30px #00ffff);} }
-
-/* 卡片 */
 .card{ background:linear-gradient(160deg,#07142a,#020a1a); border:1px solid rgba(0,255,255,.2); border-radius:20px; padding:25px; transition:.5s; box-shadow:0 0 25px rgba(0,150,255,.3), 0 0 60px rgba(0,255,255,.1) inset; }
 .card:hover{ transform:translateY(-12px) scale(1.03); box-shadow:0 0 45px rgba(0,255,255,.6), 0 0 80px rgba(0,255,255,.2) inset; }
 .card h3{margin-bottom:10px;color:#00ffff;}
@@ -38,46 +36,33 @@ footer.bottom{ display:flex; flex-direction:column; align-items:center; gap:25px
 .big-thanks{ font-size:72px; font-weight:800; }
 .channel-title{ font-size:36px; font-weight:700; }
 
-/* ===== 量子流程球 ===== */
+/* ===== 流程圖 ===== */
 .quantum-flow{ width:100%; padding:0 10px; display:flex; justify-content:space-between; align-items:center; gap:10px; }
 .quantum-step{ flex:1; aspect-ratio:1/1; max-width:220px; background:rgba(20,30,50,0.95); border-radius:50%; display:flex; flex-direction:column; justify-content:center; align-items:center; color:#00ffff; text-align:center; font-family:"Orbitron","Noto Sans TC"; position:relative; overflow:hidden; animation:float 6s ease-in-out infinite alternate; box-shadow: 0 0 25px #00ffff inset, 0 0 50px #00ffff; transition: transform 0.4s ease, box-shadow 0.4s ease; }
 .quantum-step:hover{ transform: scale(1.15) translateY(-10px); box-shadow: 0 0 35px #00ffff inset, 0 0 70px #00ffff, 0 0 50px #00ffff inset; }
 .quantum-step h3{ font-size:22px; margin:5px 0; }
 .quantum-step span{ font-size:14px; opacity:0.9; text-shadow:0 0 6px #00ffff; }
-.quantum-step::before{ content:''; position:absolute; width:300%; height:300%; background:radial-gradient(circle, #00ffff 1%, transparent 1%) repeat; background-size:12px 12px; animation:particle 8s linear infinite; opacity:0.4; z-index:0; filter:blur(1.5px); }
 
-@keyframes particle{ 0%{transform:translate(0,0);} 50%{transform:translate(60px,60px);} 100%{transform:translate(0,0);} }
-@keyframes float{ 0%{transform:translateY(0px);} 50%{transform:translateY(-15px);} 100%{transform:translateY(0px);} }
-@keyframes footer-glow{ 0%{text-shadow:0 0 6px #00ffff,0 0 12px #00ffff,0 0 18px #00ffff,0 0 30px #00ffff;} 50%{text-shadow:0 0 10px #00ffff,0 0 20px #00ffff,0 0 28px #00ffff,0 0 45px #00ffff;} 100%{text-shadow:0 0 6px #00ffff,0 0 12px #00ffff,0 0 18px #00ffff,0 0 30px #00ffff;} }
-
-/* 捲動動畫 */
-.reveal{opacity:0; transform:translateY(40px); transition:all .8s cubic-bezier(.2,.9,.2,1);}
-.show{opacity:1; transform:translateY(0);}
-
-/* ===== YouTube 最新影片區 ===== */
-#yt-latest{
-  font-family: Arial, sans-serif; 
-  max-width:1000px; 
-  margin:auto; 
-  padding:20px 10px; 
-  color:#fff; 
-}
-#yt-videos {
-  display:flex; 
-  justify-content:space-between; 
-  gap:10px; 
-}
-#yt-videos .video-card {
-  flex:1; 
-  max-width:calc((100% - 20px)/3);
-}
+/* ===== YouTube 區 ===== */
+#yt-latest{ font-family: Arial, sans-serif; max-width:1000px; margin:auto; padding:20px 10px; color:#fff; }
+#yt-videos { display:flex; justify-content:space-between; gap:10px; }
+#yt-videos .video-card { flex:1; max-width:calc((100% - 20px)/3); }
 #yt-videos .video-card img { width:100%; height:auto; border-radius:8px; display:block; }
 #yt-videos .video-card .title { margin-top:4px; font-weight:bold; text-decoration:underline; color:#fff; }
 #yt-videos .video-card .date { font-size:12px; color:#ccc; margin-top:2px; }
 
-/* ===== 粒子背景 & 空白區域 ===== */
+/* ===== 粒子背景 ===== */
 #particle-canvas{ position:fixed; top:0; left:0; width:100%; height:100%; z-index:-1; }
 .spacer{ height:500px; }
+
+/* ===== Reveal 效果 ===== */
+.reveal{opacity:0; transform:translateY(40px); transition:all .8s cubic-bezier(.2,.9,.2,1);}
+.show{opacity:1; transform:translateY(0);}
+
+/* ===== 動畫 Keyframes ===== */
+@keyframes glow{ 0%{filter:drop-shadow(0 0 5px #00ffff);} 100%{filter:drop-shadow(0 0 30px #00ffff);} }
+@keyframes float{ 0%{transform:translateY(0px);} 50%{transform:translateY(-15px);} 100%{transform:translateY(0px);} }
+@keyframes footer-glow{ 0%{text-shadow:0 0 6px #00ffff,0 0 12px #00ffff,0 0 18px #00ffff,0 0 30px #00ffff;} 50%{text-shadow:0 0 10px #00ffff,0 0 20px #00ffff,0 0 28px #00ffff,0 0 45px #00ffff;} 100%{text-shadow:0 0 6px #00ffff,0 0 12px #00ffff,0 0 18px #00ffff,0 0 30px #00ffff;} }
 </style>
 </head>
 <body>
@@ -95,30 +80,25 @@ footer.bottom{ display:flex; flex-direction:column; align-items:center; gap:25px
 </header>
 
 <main>
-  <h1 class="main-title reveal show" style="color:#FFFF00 !important ; font-size:60px !important;"> StarCraft 2 AI </h1>
+  <h1 class="main-title reveal show">StarCraft 2 AI</h1>
 
   <div class="card reveal show">
-    <h3>🤖 SC 2 AI</h3>
+    <h3>🤖 SC 2</h3>
     <p>StarCraft 2 是一款2010年發布的RTS（即時戰略）神作，以快節奏、高度競技性、高難度操作與其需要一生學習的深度，被稱為RTS類型的巔峰之作，更是電競史上重要作品。</p>
   </div>
 
   <div class="card reveal show">
-    <h3>⚡ 戰術學習模組</h3>
-    <p>透過深度強化學習，不斷記錄戰鬥結果，優化兵種搭配與行軍路線。</p>
-  </div>
-
-  <div class="card reveal show">
-    <h3>🎮 電競視覺介面</h3>
-    <p>高科技 HUD 風格介面，打造專業電競戰場展示空間。</p>
+    <h3>⚡ SC 2 AI</h3>
+    <p>建構一套能於即時、資訊不完全且高度複雜的環境中穩定運行的決策系統；AI 必須在每一個遊戲迴圈中同步處理資源分配、單位狀態、地圖資訊與敵我變化，並在有限時間內完成多層次邏輯判斷與行為執行，其困難點在於決策具有強烈的時序依賴、狀態空間極大且錯誤無法回溯，使得單純的演算法必須結合精細的邏輯設計與系統化的流程控制，才能在實戰中長時間穩定運作。</p>
   </div>
 
   <div class="quantum-flow reveal show">
-    <div class="quantum-step"><h3>STEP 1</h3><span>數據輸入</span></div>
-    <div class="quantum-step"><h3>STEP 2</h3><span>量子編譯</span></div>
-    <div class="quantum-step"><h3>STEP 3</h3><span>神經處理</span></div>
-    <div class="quantum-step"><h3>STEP 4</h3><span>決策推演</span></div>
-    <div class="quantum-step"><h3>STEP 5</h3><span>模擬測試</span></div>
-    <div class="quantum-step"><h3>STEP 6</h3><span>結果輸出</span></div>
+    <div class="quantum-step"><h3>STEP 1</h3><span>環境建置</span></div>
+    <div class="quantum-step"><h3>STEP 2</h3><span>基礎 Bot 架構</span></div>
+    <div class="quantum-step"><h3>STEP 3</h3><span>資訊感知</span></div>
+    <div class="quantum-step"><h3>STEP 4</h3><span>行為邏輯</span></div>
+    <div class="quantum-step"><h3>STEP 5</h3><span>策略與決策</span></div>
+    <div class="quantum-step"><h3>STEP 6</h3><span>實戰測試與優化</span></div>
   </div>
 
   <!-- YouTube 最新影片區 -->
@@ -126,15 +106,13 @@ footer.bottom{ display:flex; flex-direction:column; align-items:center; gap:25px
     <h2>最新影片</h2>
     <div id="yt-videos">
       <div class="video-card">
-        <a href="https://www.youtube.com/watch?v=lp0LUg0-k3k" target="_blank" style="text-decoration:none;">
+        <a href="https://www.youtube.com/watch?v=lp0LUg0-k3k" target="_blank">
           <img src="https://img.youtube.com/vi/lp0LUg0-k3k/hqdefault.jpg" alt="video1">
-          <div class="title"></div>
         </a>
       </div>
       <div class="video-card">
-        <a href="https://www.youtube.com/watch?v=aZd_zGaTdSU" target="_blank" style="text-decoration:none;">
+        <a href="https://www.youtube.com/watch?v=aZd_zGaTdSU" target="_blank">
           <img src="https://img.youtube.com/vi/aZd_zGaTdSU/hqdefault.jpg" alt="video2">
-          <div class="title"></div>
         </a>
       </div>
       <div class="video-card" id="dynamic-video-card"></div>
@@ -142,35 +120,28 @@ footer.bottom{ display:flex; flex-direction:column; align-items:center; gap:25px
     <div id="yt-status" style="margin-top:10px; color:#aaa;"></div>
   </div>
 
-  <!-- ===== 新增五大功能區塊 ===== -->
-  <section id="extra-features" class="reveal show" style="margin:50px 10%; display:grid; grid-template-columns:1fr 1fr; gap:30px;">
-    <div class="card">
-      <h3>🎬 影片播放模組</h3>
-      <iframe width="100%" height="200" src="https://www.youtube.com/embed/lp0LUg0-k3k" title="影片示範" frameborder="0" allowfullscreen style="border-radius:8px;"></iframe>
-      <p>直接在網站播放，不必跳轉 YouTube。</p>
+  <!-- 💬 社群互動｜留言區 -->
+  <section id="comment-area" class="comment-section reveal show">
+    <h2>💬 社群互動</h2>
+    <div class="comment-input">
+      <textarea id="commentText" placeholder="輸入留言..."></textarea>
+      <button id="commentBtn">送出</button>
     </div>
-    <div class="card">
-      <h3>📊 AI 戰績統計</h3>
-      <canvas id="ai-stats" width="400" height="200" style="background:#020a1a; border-radius:8px;"></canvas>
-      <p>勝率、兵種使用率、常用戰術示意。</p>
-    </div>
-    <div class="card">
-      <h3>💬 社群互動</h3>
-      <p>留言或討論區（示意）：</p>
-      <textarea placeholder="輸入留言..." style="width:100%; height:80px; border-radius:6px; padding:8px;"></textarea>
-      <button style="margin-top:6px; padding:6px 12px; background:#00ffff; color:#000; font-weight:600; border:none; border-radius:6px; cursor:pointer;">送出</button>
-    </div>
-    <div class="card">
-      <h3>✨ 視覺效果</h3>
-      <p>全頁粒子背景 + 滾動 reveal 動畫效果，增添科技感。</p>
-    </div>
-    <div class="card" style="grid-column:span 2;">
-      <h3>🔍 搜尋與篩選</h3>
-      <input type="text" placeholder="搜尋影片或文章..." style="width:70%; padding:8px; border-radius:6px; border:none;">
-      <button style="padding:8px 14px; margin-left:6px; background:#00ffff; color:#000; font-weight:600; border:none; border-radius:6px; cursor:pointer;">搜尋</button>
-      <p style="margin-top:6px;">可篩選 / 排序影片與卡片內容。</p>
-    </div>
+    <div id="commentList" class="comment-list"></div>
   </section>
+
+  <div class="card">
+    <h3>📊 AI 戰績統計</h3>
+    <canvas id="ai-stats" width="400" height="200"></canvas>
+    <p>勝率、兵種使用率、常用戰術示意。</p>
+  </div>
+
+  <div class="card">
+    <h3>🔍 搜尋與篩選</h3>
+    <input type="text" placeholder="搜尋影片或文章...">
+    <button>搜尋</button>
+    <p>可篩選 / 排序影片與卡片內容。</p>
+  </div>
 
   <div class="spacer"></div>
 </main>
@@ -187,7 +158,7 @@ footer.bottom{ display:flex; flex-direction:column; align-items:center; gap:25px
 
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 <script>
-// reveal scroll
+// Reveal scroll
 (function(){
   const reveals = document.querySelectorAll('.reveal');
   const revealOnScroll = () => {
@@ -219,74 +190,45 @@ async function fetchVideos() {
 
 function renderDynamicVideo(v) {
   const container = document.getElementById('dynamic-video-card');
-  container.innerHTML = `
-    <a href="https://www.youtube.com/watch?v=${v.id}" target="_blank" style="color:#fff; text-decoration:none;">
+  container.innerHTML = `<a href="https://www.youtube.com/watch?v=${v.id}" target="_blank">
       <img src="${v.thumb}" alt="${v.title}">
       <div class="title">${v.title}</div>
       <div class="date">${new Date(v.published).toLocaleString()}</div>
-    </a>
-  `;
+  </a>`;
 }
 
 async function updateLoop(){
   try{
     const videos = await fetchVideos();
-    if (videos.length > 0) renderDynamicVideo(videos[0]);
+    if (videos.length) renderDynamicVideo(videos[0]);
     document.getElementById('yt-status').textContent = `最後更新: ${new Date().toLocaleTimeString()}`;
-  } catch(e){
-    document.getElementById('yt-status').textContent = '更新失敗: '+e.message;
+  }catch(e){
+    document.getElementById('yt-status').textContent = `更新失敗`;
   }
 }
-
 updateLoop();
-setInterval(updateLoop, POLL_INTERVAL);
+setInterval(updateLoop,POLL_INTERVAL);
 
-// Chart.js 統計
-const ctx = document.getElementById('ai-stats').getContext('2d');
-new Chart(ctx, {
-    type: 'bar',
-    data: {
-        labels: ['Terran','Zerg','Protoss'],
-        datasets: [{
-            label: '勝率 %',
-            data: [55, 62, 48],
-            backgroundColor: ['#00ffff','#ffdd55','#ff6a6a']
-        }]
-    },
-    options: {
-        responsive:true,
-        plugins:{legend:{display:false}},
-        scales:{y:{beginAtZero:true, max:100}}
-    }
+// 💬 留言功能
+const commentBtn = document.getElementById('commentBtn');
+const commentText = document.getElementById('commentText');
+const commentList = document.getElementById('commentList');
+
+commentBtn.addEventListener('click', () => {
+  const text = commentText.value.trim();
+  if(!text) return alert('請輸入留言！');
+  const div = document.createElement('div');
+  div.textContent = text + ' — ' + new Date().toLocaleString();
+  div.style.background = 'rgba(0,255,255,0.1)';
+  div.style.padding = '8px 12px';
+  div.style.borderRadius = '6px';
+  div.style.boxShadow = '0 0 8px rgba(0,255,255,0.3)';
+  commentList.prepend(div);
+  commentText.value = '';
 });
-https://github.com/s310424-prog/flask-heroku/blob/main/templates/index.html
-// 粒子背景
-const canvas = document.getElementById('particle-canvas');
-const ctx2 = canvas.getContext('2d');
-canvas.width = window.innerWidth;
-canvas.height = window.innerHeight;
-
-const particles = [];
-for(let i=0;i<150;i++){
-  particles.push({x:Math.random()*canvas.width, y:Math.random()*canvas.height, r:Math.random()*2+1, dx:(Math.random()-0.5)*0.7, dy:(Math.random()-0.5)*0.7});
-}
-
-function animateParticles(){
-  ctx2.clearRect(0,0,canvas.width,canvas.height);
-  particles.forEach(p=>{
-    ctx2.beginPath();
-    ctx2.arc(p.x,p.y,p.r,0,Math.PI*2);
-    ctx2.fillStyle='rgba(0,255,255,0.5)';
-    ctx2.fill();
-    p.x += p.dx; p.y += p.dy;
-    if(p.x<0||p.x>canvas.width)p.dx*=-1;
-    if(p.y<0||p.y>canvas.height)p.dy*=-1;
-  });
-  requestAnimationFrame(animateParticles);
-}
-animateParticles();
-window.addEventListener('resize',()=>{canvas.width=window.innerWidth; canvas.height=window.innerHeight;});
+commentText.addEventListener('keydown', (e) => {
+  if(e.key==='Enter' && !e.shiftKey){ e.preventDefault(); commentBtn.click(); }
+});
 </script>
-
 </body>
 </html>
